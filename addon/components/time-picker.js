@@ -433,24 +433,6 @@ export default Component.extend(
     },
 
     /**
-     * This fires when the component is inserted into the DOM.
-     */
-    didInsertElement()
-    {
-      // If selectedTime is set/overridden/calculated we need to tell power-select about it.
-      if (this.get('selectedTime') !== null) {
-        // We can't do this in the init() because power-select has not been loaded into the DOM yet.
-        try {
-          this.propertyWillChange('selectedTime');
-          this.propertyDidChange('selectedTime');
-        } catch (e) {
-          // Ugly work-around by setting selectedTime to itself.
-          this.set('selectedTime', this.get('selectedTime'));
-        }
-      }
-    },
-
-    /**
      * Returns the date object (or the current date) as a string in a "digital clock" or military format:
      *
      * @private
